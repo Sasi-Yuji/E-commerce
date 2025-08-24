@@ -1,0 +1,39 @@
+.admin-dashboard {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+}
+
+.sidebar .nav-link {
+  font-size: 1rem;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #495057;
+}
+
+.main-content {
+  background-color: #f8f9fa;
+}
+
+.stat-card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+H3{
+    text-align: center;
+}

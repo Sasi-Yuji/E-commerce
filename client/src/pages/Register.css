@@ -1,0 +1,126 @@
+/* Whole page layout */
+.register-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+}
+
+/* Left image section */
+.register-image {
+  width: 490px;   /* same width as form */
+  height: 600px;  /* same height as form */
+  overflow: hidden; /* ensures image corners match */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.register-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* fills container without white border */
+  border-radius: 12px;
+}
+
+/* Right form wrapper */
+.register-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card-like form */
+.register-form {
+  background: #fff;
+  padding: 50px;
+  width: 520px;
+  height: 600px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* Brand */
+.brand {
+  font-size: 26px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-icon {
+  font-size: 30px;
+  color: #e76f51;
+}
+
+/* Form title */
+.form-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+/* Inputs */
+form {
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #e76f51;
+  box-shadow: 0 0 6px rgba(231, 111, 81, 0.4);
+}
+
+/* Button */
+.form-btn {
+  width: 100%;
+  padding: 14px;
+  background: #e76f51;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-btn:hover {
+  background: #d45b3d;
+}
+
+/* Login link */
+.login-link {
+  margin-top: 15px;
+  font-size: 15px;
+  color: #555;
+}
+
+.login-link a {
+  color: #e76f51;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

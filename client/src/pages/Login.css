@@ -1,0 +1,180 @@
+/* Container */
+.login-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(135deg, #fff5eb, #ffe4d2); /* mild gradient */
+}
+
+/* Left side */
+.login-left {
+  flex: 1;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px; /* more padding for better balance */
+}
+
+.login-left h1 {
+  font-size: 3rem;         /* increased heading size */
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  color: #ff6b00;
+}
+
+.login-left p {
+  font-size: 1.3rem;       /* larger description */
+  margin-bottom: 1px;
+  color: #444;
+}
+
+.login-illustration {
+  max-width: 500px;        /* increased image size */
+  width: 100%;
+  margin-top: 1px;
+  align-self: center;      /* keep centered */
+}
+
+/* Right side */
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: #fff;
+  padding: 50px;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.brand-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ff6b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.welcome {
+  font-size: 1.8rem;
+  margin: 12px 0 24px;
+  font-weight: 600;
+  color: #222;
+}
+
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 1rem;
+}
+
+.forgot {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.forgot a {
+  font-size: 0.9rem;
+  color: #ff6b00;
+  text-decoration: none;
+}
+
+.login-btn {
+  width: 100%;
+  background: #ff6b00;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #e65a00;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.divider::before {
+  margin-right: 10px;
+}
+
+.divider::after {
+  margin-left: 10px;
+}
+
+/* Social buttons */
+.social-login {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+
+.social-login button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-weight: 500;
+
+  display: flex;                /* make button a flex container */
+  align-items: center;          /* vertically center icon + text */
+  justify-content: center;      /* center horizontally */
+  gap: 8px;                     /* space between icon and text */
+}
+
+
+.google {
+  background: white;
+}
+
+.facebook {
+  background: #3b5998;
+  color: white;
+  border: none;
+}
+
+/* Register text */
+.register-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.register-text a {
+  color: #ff6b00;
+  text-decoration: none;
+  font-weight: bold;
+}

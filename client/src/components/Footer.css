@@ -1,0 +1,51 @@
+.footer {
+  background: linear-gradient(135deg, #111, #222); /* Dark gradient */
+  color: #fff;
+  border-top: 3px solid #e63946; /* Donation theme red */
+}
+
+.footer-title {
+  color: #e63946;
+  font-weight: 700;
+  padding-top: 10px;
+}
+
+.footer-heart {
+  color: #e63946;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.footer-link {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #e63946;
+}
+
+.social-icons {
+  display: inline-flex;
+  align-items: center;
+}
+
+.social-link {
+  color: #bbb;
+  font-size: 1.1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-link:hover {
+  color: #e63946;
+  transform: translateY(-2px);
+}
+
+/* Center copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 6px;
+  padding-bottom: 10px;
+}

@@ -1,0 +1,260 @@
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 80px;
+  background: linear-gradient(135deg, #f7f7f7, #ededed);
+  gap: 40px;
+  position: relative; /* needed for badge */
+}
+
+.hero-content {
+  flex: 1.2;
+  max-width: 55%;
+}
+
+.hero-content h1 {
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 24px;
+  max-width: 500px;
+}
+
+.hero-features {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 28px;
+  font-size: 15px;
+  color: #333;
+}
+
+.hero-btn {
+  padding: 14px 34px;
+  background: linear-gradient(90deg, #e63946, #d62828);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #d62828, #e63946);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  width: 580px;
+  max-width: 100%;
+}
+
+/* ⭐ CENTRAL CIRCULAR BADGE */
+.hero-badge-circle {
+  position: absolute;
+  left: 43%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(135deg, #e63946, #d62828);
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(230, 57, 70, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 20px;
+  z-index: 2;
+  animation: floatBadge 3s ease-in-out infinite;
+}
+
+.hero-badge-circle svg {
+  margin-bottom: 8px;
+}
+
+@keyframes floatBadge {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-10px);
+  }
+}
+
+/* FEATURES BAR */
+.features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: #111;
+  color: #fff;
+  padding: 20px 50px;
+  text-align: center;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 14px;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  color: #e63946;
+}
+
+.feature h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.feature p {
+  font-size: 13px;
+  color: #bbb;
+  margin: 0;
+}
+
+/* HOW IT WORKS */
+.how-it-works {
+  text-align: center;
+  padding: 80px 60px;
+  background: #ffffff;
+}
+
+.how-it-works h2 {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.how-it-works .subtitle {
+  color: #444;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.step-card {
+  background: #fff;
+  padding: 40px 24px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.step-icon {
+  font-size: 40px;
+  color: #e63946;
+  background: rgba(230, 57, 70, 0.1);
+  padding: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.step-card h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #111;
+}
+
+.step-card p {
+  font-size: 17px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* 🔹 Responsive Badge + Hero */
+@media (max-width: 992px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-badge-circle {
+    position: static;
+    transform: none;
+    margin: 20px auto;
+    width: 120px;
+    height: 120px;
+    font-size: 14px;
+  }
+
+  .hero-image {
+    justify-content: center;
+  }
+
+  .hero-image img {
+    width: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-badge-circle {
+    width: 100px;
+    height: 100px;
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .hero-image img {
+    width: 300px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+}

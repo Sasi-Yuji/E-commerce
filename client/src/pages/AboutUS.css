@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.about-page {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #f9f7f0 0%, #e8e1cf 100%);
+  color: #3c2f20;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.about-header {
+  background: linear-gradient(90deg, #4e3629 0%, #6d4c41 100%);
+  padding: 20px 0;
+  color: #f8f3e6;
+}
+
+.about-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Navigation */
+.header-nav {
+  display: flex;
+  gap: 25px;
+}
+
+.header-nav a {
+  color: #f8f3e6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.header-nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  padding: 50px 20px;
+  border-bottom: 2px solid #d4a76a;
+}
+
+.about-hero h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: #4e3629;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.about-hero h2:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #d4a76a;
+}
+
+.about-hero p {
+  font-size: 18px;
+  color: #6d4c41;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+  margin-top: 30px;
+}
+
+/* Content Sections */
+.about-section {
+  padding: 60px 0;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.text-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.text-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #4e3629;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.text-content h2:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  width: 5px;
+  background: #d4a76a;
+  border-radius: 3px;
+}
+
+.text-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: #6d4c41;
+  margin: 25px 0 15px;
+}
+
+.text-content h4 {
+  font-family: 'Montserrat', sans-serif;
+  color: #2a4b3c;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.text-content p {
+  margin-bottom: 20px;
+  font-size: 17px;
+  color: #5a4a3f;
+}
+
+/* B1G1 Section */
+.b1g1-section {
+  background: linear-gradient(to right, #4e3629 0%, #6d4c41 100%);
+  color: #f8f3e6;
+}
+
+.b1g1-section .text-content h3 {
+  color: #d4a76a;
+}
+
+.b1g1-section .text-content h4 {
+  color: #f8f3e6;
+}
+
+.b1g1-section .text-content p {
+  color: #e8d6c1;
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  background: #d4a76a;
+  color: #4e3629;
+  padding: 14px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background: #c0975f;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  color: #4e3629;
+}
+
+/* CTA Section */
+.contact-cta {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.contact-cta p {
+  font-size: 20px;
+  color: #5a4a3f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-header .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .header-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .content-wrapper {
+    flex-direction: column;
+  }
+  
+  .about-hero h2 {
+    font-size: 32px;
+  }
+  
+  .text-content h2 {
+    font-size: 28px;
+  }
+}

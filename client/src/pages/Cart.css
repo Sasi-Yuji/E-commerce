@@ -1,0 +1,154 @@
+/* Full Page Background */
+.cart-page {
+  min-height: 100vh;
+  width: 100%;
+  background: url("/old-paper-texture.jpg") repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Overlay for readability */
+.cart-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(253, 246, 227, 0.7); /* subtle vintage tint */
+  z-index: 0;
+}
+
+.cart-container {
+  position: relative;
+  z-index: 1;
+  width: 95%;           /* stretch more */
+  max-width: 1600px;    /* wider than before */
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Title */
+.cart-title {
+  text-align: center;
+  font-family: "Courier New", monospace;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #4b2e2e;
+  border-bottom: 2px dashed #a0522d;
+  padding-bottom: 10px;
+}
+
+/* Empty Cart Text */
+.empty-text {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+}
+
+/* Cart List */
+.cart-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 248, 220, 0.6); /* lighter & transparent */
+  border: 2px dashed #c19a6b;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.cart-item-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #a0522d;
+  background: #fff8dc;
+}
+
+.cart-item-details {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.cart-item-name {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Georgia", serif;
+  margin: 0;
+  color: #4b2e2e;
+}
+
+.cart-item-price {
+  color: #7b4b2a;
+  margin: 5px 0;
+}
+
+.cart-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-input {
+  width: 60px;
+  padding: 5px;
+  border: 2px solid #c19a6b;
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+.retro-remove-btn {
+  background: #8b0000;
+  color: #fff8dc;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.retro-remove-btn:hover {
+  background: #5c0000;
+}
+
+.cart-item-total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4b2e2e;
+  margin-left: 15px;
+}
+
+/* Summary */
+.cart-summary {
+  text-align: right;
+  margin-top: 40px;
+}
+
+.cart-total {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Courier New", monospace;
+  margin-bottom: 15px;
+}
+
+.retro-checkout-btn {
+  background: #d2691e;
+  color: #fff8dc;
+  font-size: 20px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.2s ease;
+}
+
+.retro-checkout-btn:hover {
+  background: #a0522d;
+}

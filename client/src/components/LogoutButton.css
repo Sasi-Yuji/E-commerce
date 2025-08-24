@@ -1,0 +1,10 @@
+.icon {
+  font-size: 1.4rem;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icon:hover {
+  color: #ff4d4d; /* red tint for logout hover */
+}
