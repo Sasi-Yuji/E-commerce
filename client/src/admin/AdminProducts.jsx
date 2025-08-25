@@ -1,4 +1,3 @@
-// src/admin/AdminProducts.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col, Card, Button, Form, Table, Spinner } from "react-bootstrap";
@@ -164,7 +163,6 @@ const AdminProducts = () => {
                   </thead>
                   <tbody>
                     {products.length > 0 ? products.map(product => {
-                      // Ensure proper image URL
                       const imageUrl = product.image ? `http://localhost:5000/uploads/${product.image.replace(/^\/uploads\//, "")}` : null;
 
                       return (

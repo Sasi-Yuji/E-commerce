@@ -30,7 +30,6 @@ function AdminDonations() {
 
   useEffect(() => {
     fetchDonations();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleStatusChange = async (id, status) => {
@@ -101,7 +100,6 @@ function AdminDonations() {
                   <td>{d.condition || "-"}</td>
                   <td>{d.donationType || "-"}</td>
 
-                  {/* 🔥 Order Info Column */}
                   <td>
                     {d.order ? (
                       <div>

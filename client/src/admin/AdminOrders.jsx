@@ -1,4 +1,3 @@
-// src/admin/AdminOrders.jsx
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -20,7 +19,7 @@ function AdminOrders() {
         if (!res.ok) throw new Error("Failed to fetch orders");
         const data = await res.json();
 
-        setOrders(Array.isArray(data) ? data : []); // ensure array
+        setOrders(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("❌ Fetch orders error:", err);
         toast.error("Failed to load orders");

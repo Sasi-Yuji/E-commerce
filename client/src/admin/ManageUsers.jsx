@@ -1,4 +1,3 @@
-// src/admin/ManageUsers.jsx
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -15,11 +14,10 @@ function ManageUsers() {
           withCredentials: true,
         });
 
-        // If backend returns { users: [...] } or just an array
         setUsers(Array.isArray(data) ? data : data.users || []);
       } catch (err) {
         console.error("❌ Failed to fetch users", err);
-        setUsers([]); // fallback to empty array
+        setUsers([]); 
       }
     };
     fetchUsers();

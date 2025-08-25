@@ -12,7 +12,6 @@ const Products = () => {
     description: ""
   });
 
-  // Fetch all products
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -26,12 +25,10 @@ const Products = () => {
     }
   };
 
-  // Handle input
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Add / Update Product
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,7 +46,6 @@ const Products = () => {
     }
   };
 
-  // Delete Product
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/products/${id}`);
@@ -59,7 +55,6 @@ const Products = () => {
     }
   };
 
-  // Open modal for edit
   const handleEdit = (product) => {
     setEditProduct(product);
     setFormData({
@@ -77,7 +72,6 @@ const Products = () => {
         + Add Product
       </Button>
 
-      {/* Product Table */}
       <table className="table table-striped mt-3">
         <thead className="table-dark">
           <tr>
@@ -115,7 +109,6 @@ const Products = () => {
         </tbody>
       </table>
 
-      {/* Add/Edit Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>{editProduct ? "Edit Product" : "Add Product"}</Modal.Title>

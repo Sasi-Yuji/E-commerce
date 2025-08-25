@@ -41,7 +41,6 @@ function Dashboard() {
 
   return (
     <div className="admin-dashboard d-flex">
-      {/* Sidebar */}
       <aside className="sidebar bg-dark text-white p-3">
         <h2 className="h4 mb-4 text-center">Admin Panel</h2>
         <nav className="nav flex-column">
@@ -63,7 +62,6 @@ function Dashboard() {
         </nav>
       </aside>
 
-      {/* Main Content */}
       <div className="main-content flex-grow-1">
         <header className="d-flex justify-content-between align-items-center bg-white shadow-sm p-3">
           <h1 className="h3 mb-0">Dashboard</h1>
@@ -78,7 +76,6 @@ function Dashboard() {
           </button>
         </header>
 
-        {/* Stats Cards */}
         <main className="p-4">
           <div className="row g-4">
             <div className="col-md-2">
