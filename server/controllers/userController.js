@@ -1,4 +1,3 @@
-// controllers/userController.js
 const User = require("../models/User");
 
 /**
@@ -9,7 +8,7 @@ const User = require("../models/User");
 const getUsers = async (req, res) => {
   try {
     const users = await User.find().select("-password");
-    res.json({ users }); // 👈 wrap in object so frontend ManageUsers.jsx works
+    res.json({ users }); 
   } catch (err) {
     res.status(500).json({ message: "Server error fetching users" });
   }
@@ -44,7 +43,7 @@ const updateUserProfile = async (req, res) => {
     user.email = req.body.email || user.email;
 
     if (req.body.password) {
-      user.password = req.body.password; // password hash in model pre-save hook
+      user.password = req.body.password; 
     }
 
     const updatedUser = await user.save();

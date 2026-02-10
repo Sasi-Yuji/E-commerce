@@ -13,7 +13,6 @@ import {
 function Home() {
   return (
     <div className="home">
-      {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
           <h1>
@@ -31,7 +30,6 @@ function Home() {
           <button className="hero-btn">SHOP NOW</button>
         </div>
 
-        {/* ⭐ Central Circular Badge */}
         <div className="hero-badge-circle">
           <FaHandHoldingHeart size={32} color="#fff" />
           <div>
@@ -44,7 +42,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="features">
         <div className="feature">
           <FaLock className="feature-icon" />
@@ -68,7 +65,6 @@ function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
       <section className="how-it-works">
         <h2>How It Works</h2>
         <p className="subtitle">A simple process to make giving effortless</p>

@@ -69,13 +69,11 @@ function Orders() {
                 {expandedOrder === order._id && (
                   <div className="order-products">
                     {order.products.map((p) => {
-                      // Build correct image URL
                       let imgSrc = "https://via.placeholder.com/60";
                       if (p.product?.image) {
                         if (p.product.image.startsWith("http")) {
                           imgSrc = p.product.image;
                         } else {
-                          // Remove any leading slash and ensure single /uploads/
                           const filename = p.product.image.replace(/^\/+uploads\//, "");
                           imgSrc = `http://localhost:5000/uploads/${filename}`;
                         }

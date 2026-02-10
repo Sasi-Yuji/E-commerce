@@ -7,14 +7,12 @@ import "./Cart.css";
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
 
-  // ✅ Fixed getImageUrl to avoid double slashes
   const getImageUrl = (image) => {
-    if (!image) return "/placeholder.png"; // fallback placeholder
-    if (image.startsWith("http")) return image; // already full URL
+    if (!image) return "/placeholder.png"; 
+    if (image.startsWith("http")) return image; 
 
     const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
-    // remove leading slash if exists to avoid "//uploads"
     const cleanPath = image.startsWith("/") ? image.substring(1) : image;
 
     return `${apiUrl}/${cleanPath}`;
@@ -33,8 +31,7 @@ const Cart = () => {
     return;
   }
 
-  // ✅ Show toast
-  toast.success("🎉 Order placed successfully! Proceeding to checkout...", {
+  toast.success(" Order placed successfully! Proceeding to checkout...", {
     position: "top-right",
     autoClose: 3000,
     hideProgressBar: false,
@@ -43,10 +40,9 @@ const Cart = () => {
     draggable: true,
   });
 
-  // ✅ Redirect after toast duration
   setTimeout(() => {
     window.location.href = "/checkout";
-  }, 3000); // 3000ms = same as autoClose
+  }, 3000); 
 };
 
 

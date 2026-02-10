@@ -1,9 +1,6 @@
 const Product = require("../models/Product");
 const Stats = require("../models/Stats");
 
-// @desc Get all products
-// @route GET /api/products
-// @access Public
 const getProducts = async (req, res) => {
   try {
     const products = await Product.find({});
@@ -13,9 +10,6 @@ const getProducts = async (req, res) => {
   }
 };
 
-// @desc Get single product
-// @route GET /api/products/:id
-// @access Public
 const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -28,9 +22,6 @@ const getProductById = async (req, res) => {
   }
 };
 
-// @desc Add product
-// @route POST /api/products
-// @access Admin
 const addProduct = async (req, res) => {
   try {
     const { name, description, price, category } = req.body;
@@ -45,7 +36,6 @@ const addProduct = async (req, res) => {
 
     const createdProduct = await product.save();
 
-    // ✅ Increment totalProducts in Stats
     await Stats.findOneAndUpdate(
       {},
       { $inc: { totalProducts: 1 } },
@@ -58,9 +48,6 @@ const addProduct = async (req, res) => {
   }
 };
 
-// @desc Update product
-// @route PUT /api/products/:id
-// @access Admin
 const updateProduct = async (req, res) => {
   try {
     const { name, description, price, category } = req.body;
@@ -86,9 +73,6 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// @desc Delete product
-// @route DELETE /api/products/:id
-// @access Admin
 const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);

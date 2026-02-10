@@ -21,7 +21,7 @@ function AdminOrders() {
 
         setOrders(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error("❌ Fetch orders error:", err);
+        console.error(" Fetch orders error:", err);
         toast.error("Failed to load orders");
       } finally {
         setLoading(false);

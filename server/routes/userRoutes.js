@@ -8,13 +8,10 @@ const {
 
 const router = express.Router();
 
-// Get all users (admin only)
 router.get("/", protect, adminOnly, getUsers);
 
-// Get logged-in user's profile
 router.get("/profile", protect, getUserProfile);
 
-// Update logged-in user's profile
 router.put("/profile", protect, updateUserProfile);
 
 

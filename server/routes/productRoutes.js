@@ -12,12 +12,9 @@ const { protect, adminOnly } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-/**
- * Multer storage configuration
- */
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, "uploads/"); // folder where images will be stored
+    cb(null, "uploads/"); 
   },
   filename(req, file, cb) {
     cb(
@@ -27,9 +24,6 @@ const storage = multer.diskStorage({
   },
 });
 
-/**
- * File filter - allow only images
- */
 function checkFileType(file, cb) {
   const filetypes = /jpg|jpeg|png|gif/;
   const extname = filetypes.test(
@@ -51,23 +45,14 @@ const upload = multer({
   },
 });
 
-/**
- * Routes
- */
-
-// Get all products
 router.get("/", getProducts);
 
-// Get single product by ID
 router.get("/:id", getProductById);
 
-// Add a new product with image upload
 router.post("/", protect, adminOnly, upload.single("image"), addProduct);
 
-// Update a product with optional new image
 router.put("/:id", protect, adminOnly, upload.single("image"), updateProduct);
 
-// Delete a product
 router.delete("/:id", protect, adminOnly, deleteProduct);
 
 

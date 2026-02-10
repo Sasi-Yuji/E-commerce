@@ -21,7 +21,7 @@ function AdminDonations() {
       const data = await res.json();
       setDonations(Array.isArray(data) ? data : data.donations || []);
     } catch (err) {
-      console.error("❌ Fetch donations error:", err);
+      console.error(" Fetch donations error:", err);
       toast.error("Failed to load donations");
     } finally {
       setLoading(false);
@@ -50,7 +50,7 @@ function AdminDonations() {
         prev.map((d) => (d._id === id ? { ...d, status } : d))
       );
     } catch (err) {
-      console.error("❌ Update donation status error:", err);
+      console.error(" Update donation status error:", err);
       toast.error("Could not update status");
     } finally {
       setUpdatingId(null);

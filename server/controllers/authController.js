@@ -1,4 +1,3 @@
-// controllers/authController.js
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -7,7 +6,6 @@ const Stats = require("../models/Stats");
 const signToken = (id, role) =>
   jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
-// ================= REGISTER =================
 const registerUser = async (req, res) => {
   try {
     const { name, username, email, password } = req.body;
@@ -34,7 +32,6 @@ const registerUser = async (req, res) => {
       role,
     });
 
-    // Increment totalUsers in Stats (safely)
     await Stats.findOneAndUpdate(
       {},
       { $inc: { totalUsers: 1 } },
@@ -55,12 +52,10 @@ const registerUser = async (req, res) => {
   }
 };
 
-// ================= LOGIN =================
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Hardcoded admin login option
     if (email === "admin6337@gmail.com" && password === "admin6337") {
       return res.json({
         _id: "special-admin-id",
@@ -92,7 +87,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// ================= GET CURRENT USER =================
 const getMe = async (req, res) => {
   return res.json(req.user);
 };

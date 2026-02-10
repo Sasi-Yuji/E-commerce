@@ -61,7 +61,6 @@ function Checkout() {
   return (
     <div className="checkout-page">
       <div className="checkout-container">
-        {/* CART ITEMS */}
         <div className="cart-section">
           <h3 className="checkout-title">🛒 Checkout</h3>
           {cartItems.length === 0 ? (
@@ -90,7 +89,6 @@ function Checkout() {
           )}
         </div>
 
-        {/* ORDER SUMMARY */}
         <div className="summary-section">
           <h4 className="summary-title">Order Summary</h4>
           <div className="summary-details">

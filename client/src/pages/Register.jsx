@@ -11,7 +11,6 @@ function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Auto-clear form fields when page/component loads
   useEffect(() => {
     setName("");
     setEmail("");
@@ -34,15 +33,12 @@ function Register() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Registration failed");
 
-      // Save token (optional)
       localStorage.setItem("token", data.token);
 
-      // Clear form after successful registration
       setName("");
       setEmail("");
       setPassword("");
 
-      // Redirect to login
       navigate("/login");
     } catch (err) {
       setError(err.message);
@@ -53,12 +49,10 @@ function Register() {
 
   return (
     <div className="register-page">
-      {/* Left Side Image */}
       <div className="register-image">
         <img src={registerImg} alt="Register Illustration" />
       </div>
 
-      {/* Right Side Form */}
       <div className="register-form-wrapper">
         <div className="register-form">
           <h1 className="brand">

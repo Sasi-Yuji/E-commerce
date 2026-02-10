@@ -10,7 +10,7 @@ const donationSchema = new mongoose.Schema(
     order: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Order",
-      required: false, // link donation to order if it came during checkout
+      required: false, 
     },
     itemType: {
       type: String,

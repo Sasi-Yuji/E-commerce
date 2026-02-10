@@ -27,15 +27,12 @@ function Login() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Login failed");
 
-      // ✅ Save token
       localStorage.setItem("token", data.token);
 
-      // ✅ Save user & update CartContext
       if (data.user) {
         setUserContext(data.user);
       }
 
-      // ✅ Redirect
       if (data.redirect) {
         navigate(data.redirect);
       } else {
@@ -44,7 +41,6 @@ function Login() {
     } catch (err) {
       setError(err.message);
     } finally {
-      // ✅ Clear input fields regardless of success or failure
       setEmail("");
       setPassword("");
       setLoading(false);

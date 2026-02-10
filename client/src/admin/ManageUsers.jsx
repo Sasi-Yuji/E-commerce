@@ -16,7 +16,7 @@ function ManageUsers() {
 
         setUsers(Array.isArray(data) ? data : data.users || []);
       } catch (err) {
-        console.error("❌ Failed to fetch users", err);
+        console.error(" Failed to fetch users", err);
         setUsers([]); 
       }
     };
