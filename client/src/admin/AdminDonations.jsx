@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
 
 function AdminDonations() {
   const [donations, setDonations] = useState([]);
@@ -10,7 +11,7 @@ function AdminDonations() {
   const fetchDonations = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/donations", {
+      const res = await fetch(`${API_BASE_URL}/api/donations`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: token ? `Bearer ${token}` : "",
@@ -35,7 +36,7 @@ function AdminDonations() {
   const handleStatusChange = async (id, status) => {
     setUpdatingId(id);
     try {
-      const res = await fetch(`http://localhost:5000/api/donations/${id}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/donations/${id}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

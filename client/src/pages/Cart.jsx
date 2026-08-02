@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
 import "react-toastify/dist/ReactToastify.css";
 import "./Cart.css";
 
@@ -11,7 +12,7 @@ const Cart = () => {
     if (!image) return "/placeholder.png"; 
     if (image.startsWith("http")) return image; 
 
-    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const apiUrl = API_BASE_URL;
 
     const cleanPath = image.startsWith("/") ? image.substring(1) : image;
 

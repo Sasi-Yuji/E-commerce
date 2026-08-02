@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal, Button, Form } from "react-bootstrap";
+import { API_BASE_URL } from "../config";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,7 @@ const Products = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/products");
+      const res = await axios.get(`${API_BASE_URL}/api/products`);
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products", err);
@@ -33,9 +34,9 @@ const Products = () => {
     e.preventDefault();
     try {
       if (editProduct) {
-        await axios.put(`http://localhost:5000/api/products/${editProduct._id}`, formData);
+        await axios.put(`${API_BASE_URL}/api/products/${editProduct._id}`, formData);
       } else {
-        await axios.post("http://localhost:5000/api/products", formData);
+        await axios.post(`${API_BASE_URL}/api/products`, formData);
       }
       fetchProducts();
       setShowModal(false);
@@ -48,7 +49,7 @@ const Products = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/products/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/products/${id}`);
       fetchProducts();
     } catch (err) {
       console.error("Error deleting product", err);

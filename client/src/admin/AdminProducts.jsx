@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Container, Row, Col, Card, Button, Form, Table, Spinner } from "react-bootstrap";
+import { API_BASE_URL } from "../config";
 
-const API = "http://localhost:5000/api/products";
+const API = `${API_BASE_URL}/api/products`;
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -163,7 +164,7 @@ const AdminProducts = () => {
                   </thead>
                   <tbody>
                     {products.length > 0 ? products.map(product => {
-                      const imageUrl = product.image ? `http://localhost:5000/uploads/${product.image.replace(/^\/uploads\//, "")}` : null;
+                      const imageUrl = product.image ? `${API_BASE_URL}/uploads/${product.image.replace(/^\/uploads\//, "")}` : null;
 
                       return (
                         <tr key={product._id}>

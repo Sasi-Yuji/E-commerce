@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
+import { API_BASE_URL } from "../config";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Products.css";
 
@@ -16,7 +17,7 @@ function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/products");
+        const res = await fetch(`${API_BASE_URL}/api/products`);
         const data = await res.json();
         setProducts(data);
         setFilteredProducts(data);
@@ -99,7 +100,7 @@ function Products() {
               >
                 <div className="card product-card h-100 shadow-sm">
                   <img
-                    src={`http://localhost:5000${product.image}`}
+                    src={`${API_BASE_URL}${product.image}`}
                     alt={product.name}
                     className="card-img-top product-img"
                   />

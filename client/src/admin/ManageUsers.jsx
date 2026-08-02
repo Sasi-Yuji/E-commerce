@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../config";
 
 function ManageUsers() {
   const [users, setUsers] = useState([]);
@@ -7,7 +8,7 @@ function ManageUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/api/users", {
+        const { data } = await axios.get(`${API_BASE_URL}/api/users`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
