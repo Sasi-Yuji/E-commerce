@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -9,7 +10,7 @@ function AdminOrders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/orders", {
+        const res = await fetch(`${API_BASE_URL}/api/orders`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: token ? `Bearer ${token}` : "",
@@ -21,7 +22,7 @@ function AdminOrders() {
 
         setOrders(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error("❌ Fetch orders error:", err);
+        console.error(" Fetch orders error:", err);
         toast.error("Failed to load orders");
       } finally {
         setLoading(false);

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaCheckCircle, FaClock } from "react-icons/fa";
+import { API_BASE_URL } from "../config";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Orders.css";
 
@@ -13,7 +14,7 @@ function Orders() {
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch("http://localhost:5000/api/orders/myorders", {
+        const res = await fetch(`${API_BASE_URL}/api/orders/myorders`, {
           headers: { Authorization: token ? `Bearer ${token}` : "" },
         });
         if (!res.ok) throw new Error("Failed to fetch orders");
@@ -69,15 +70,13 @@ function Orders() {
                 {expandedOrder === order._id && (
                   <div className="order-products">
                     {order.products.map((p) => {
-                      // Build correct image URL
                       let imgSrc = "https://via.placeholder.com/60";
                       if (p.product?.image) {
                         if (p.product.image.startsWith("http")) {
                           imgSrc = p.product.image;
                         } else {
-                          // Remove any leading slash and ensure single /uploads/
                           const filename = p.product.image.replace(/^\/+uploads\//, "");
-                          imgSrc = `http://localhost:5000/uploads/${filename}`;
+                          imgSrc = `${API_BASE_URL}/uploads/${filename}`;
                         }
                       }
 

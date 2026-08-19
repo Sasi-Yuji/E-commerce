@@ -1,4 +1,3 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,23 +9,19 @@ import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Orders from "./pages/Orders";
-import AboutUs from "./pages/AboutUs.jsx"; // ✅ only one import
+import AboutUs from "./pages/AboutUs.jsx"; 
 
-// ✅ Admin Pages
 import Dashboard from "./admin/Dashboard.jsx";
 import AdminProducts from "./admin/AdminProducts.jsx";
 import AdminOrders from "./admin/AdminOrders.jsx";
 import AdminDonations from "./admin/AdminDonations.jsx";
 import ManageUsers from "./admin/ManageUsers.jsx";
 
-// Cart Context
 import { CartProvider } from "./context/CartContext";
 
-// Notifications
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Wrapper
 function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
@@ -37,7 +32,6 @@ function AppContent() {
 
       <main>
         <Routes>
-          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
@@ -46,9 +40,8 @@ function AppContent() {
           <Route path="/donate" element={<Donation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/about" element={<AboutUs />} /> {/* About Us Page */}
+          <Route path="/about" element={<AboutUs />} />
 
-          {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route path="/admin/orders" element={<AdminOrders />} />

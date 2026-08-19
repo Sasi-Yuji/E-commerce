@@ -1,10 +1,9 @@
 import React from "react";
-import "./AboutUs.css";
+import "./AboutUS.css";
 
 function AboutUs() {
   return (
     <div className="about-page">
-      {/* Header */}
       <header className="about-header">
         <div className="container">
           <h1 className="logo">ShopSphere</h1>
@@ -17,7 +16,6 @@ function AboutUs() {
         </div>
       </header>
 
-      {/* Hero Section */}
       <section className="about-hero">
         <div className="container">
           <h2>About Us</h2>
@@ -25,7 +23,6 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* Hero / Story */}
       <div className="container">
         <div className="glass-card hero-card p-4 mb-5">
           <p>
@@ -42,7 +39,6 @@ function AboutUs() {
         </div>
       </div>
 
-      {/* Vintage Treasures Section */}
       <section className="about-section vintage-section">
         <div className="container">
           <div className="content-wrapper">
@@ -62,7 +58,6 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* B1G1 Section */}
       <section className="about-section b1g1-section">
         <div className="container">
           <div className="content-wrapper">
@@ -83,7 +78,6 @@ function AboutUs() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <div className="container">
         <div className="contact-cta mt-5 text-center">
           <p>Want to collaborate with us or know more?</p>

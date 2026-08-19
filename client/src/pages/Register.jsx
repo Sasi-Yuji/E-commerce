@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 import "./Register.css";
 import registerImg from "../assets/register.png";
 
@@ -11,7 +12,6 @@ function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Auto-clear form fields when page/component loads
   useEffect(() => {
     setName("");
     setEmail("");
@@ -25,7 +25,7 @@ function Register() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -34,15 +34,12 @@ function Register() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Registration failed");
 
-      // Save token (optional)
       localStorage.setItem("token", data.token);
 
-      // Clear form after successful registration
       setName("");
       setEmail("");
       setPassword("");
 
-      // Redirect to login
       navigate("/login");
     } catch (err) {
       setError(err.message);
@@ -53,12 +50,10 @@ function Register() {
 
   return (
     <div className="register-page">
-      {/* Left Side Image */}
       <div className="register-image">
         <img src={registerImg} alt="Register Illustration" />
       </div>
 
-      {/* Right Side Form */}
       <div className="register-form-wrapper">
         <div className="register-form">
           <h1 className="brand">

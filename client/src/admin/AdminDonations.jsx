@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
 
 function AdminDonations() {
   const [donations, setDonations] = useState([]);
@@ -10,7 +11,7 @@ function AdminDonations() {
   const fetchDonations = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/donations", {
+      const res = await fetch(`${API_BASE_URL}/api/donations`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: token ? `Bearer ${token}` : "",
@@ -21,7 +22,7 @@ function AdminDonations() {
       const data = await res.json();
       setDonations(Array.isArray(data) ? data : data.donations || []);
     } catch (err) {
-      console.error("❌ Fetch donations error:", err);
+      console.error(" Fetch donations error:", err);
       toast.error("Failed to load donations");
     } finally {
       setLoading(false);
@@ -35,7 +36,7 @@ function AdminDonations() {
   const handleStatusChange = async (id, status) => {
     setUpdatingId(id);
     try {
-      const res = await fetch(`http://localhost:5000/api/donations/${id}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/donations/${id}/status`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +51,7 @@ function AdminDonations() {
         prev.map((d) => (d._id === id ? { ...d, status } : d))
       );
     } catch (err) {
-      console.error("❌ Update donation status error:", err);
+      console.error(" Update donation status error:", err);
       toast.error("Could not update status");
     } finally {
       setUpdatingId(null);

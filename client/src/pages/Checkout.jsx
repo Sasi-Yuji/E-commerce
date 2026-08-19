@@ -2,6 +2,7 @@ import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { API_BASE_URL } from "../config";
 import DonationModal from "../components/DonationModal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Checkout.css";
@@ -38,7 +39,7 @@ function Checkout() {
         return;
       }
 
-      const resOrder = await fetch("http://localhost:5000/api/orders", {
+      const resOrder = await fetch(`${API_BASE_URL}/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +62,6 @@ function Checkout() {
   return (
     <div className="checkout-page">
       <div className="checkout-container">
-        {/* CART ITEMS */}
         <div className="cart-section">
           <h3 className="checkout-title">🛒 Checkout</h3>
           {cartItems.length === 0 ? (
@@ -72,7 +72,7 @@ function Checkout() {
                 <li key={item._id} className="cart-item">
                   <div className="cart-item-info">
                     <img
-                      src={`http://localhost:5000${item.image}`}
+                      src={`${API_BASE_URL}${item.image}`}
                       alt={item.name}
                       className="cart-item-img"
                     />
@@ -90,7 +90,6 @@ function Checkout() {
           )}
         </div>
 
-        {/* ORDER SUMMARY */}
         <div className="summary-section">
           <h4 className="summary-title">Order Summary</h4>
           <div className="summary-details">

@@ -1,4 +1,3 @@
-// routes/adminRoutes.js
 const express = require("express");
 const { protect, adminOnly } = require("../middleware/authMiddleware");
 const User = require("../models/User");
@@ -8,7 +7,6 @@ const Product = require("../models/Product");
 
 const router = express.Router();
 
-// ✅ GET /api/admin/stats (only for admins)
 router.get("/stats", protect, adminOnly, async (req, res) => {
   try {
     const totalUsers = await User.countDocuments();

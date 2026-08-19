@@ -8,7 +8,6 @@ function Footer() {
     <footer className="footer py-1 mt-5">
       <div className="container">
         <div className="row align-items-center">
-          {/* Left Side */}
           <div className="col-md-5 text-center text-md-start mb-3 mb-md-0">
             <h5 className="fw-bold footer-title">🛍️ShopSphere</h5>
             <p className="small mb-1">
@@ -17,7 +16,6 @@ function Footer() {
             </p>
           </div>
 
-          {/* Right Side */}
           <div className="col-md-6 text-center text-md-end">
             <a href="#" className="footer-link mx-2">
               About Us
@@ -42,7 +40,6 @@ function Footer() {
           </div>
         </div>
 
-        {/* Center Copyright */}
         <div className="footer-bottom text-center mt-3">
           <p className="small mb-0 text-light">
             © {new Date().getFullYear()} ShopSphere. All rights reserved.

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { API_BASE_URL } from "../config";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Dashboard.css";
 
@@ -16,7 +17,7 @@ function Dashboard() {
           return;
         }
 
-        const res = await fetch("http://localhost:5000/api/stats", {
+        const res = await fetch(`${API_BASE_URL}/api/stats`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

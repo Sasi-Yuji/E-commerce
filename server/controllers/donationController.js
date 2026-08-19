@@ -1,7 +1,6 @@
 const Donation = require("../models/Donation");
 const Stats = require("../models/Stats");
 
-// Create Donation
 const createDonation = async (req, res) => {
   try {
     const { itemType, description, quantity, condition, donationType, amount } = req.body;
@@ -24,7 +23,6 @@ const createDonation = async (req, res) => {
       amount: amount || 0,
     });
 
-    // Update global stats
     await Stats.findOneAndUpdate({}, { $inc: { totalDonations: 1 } }, { upsert: true });
 
     res.status(201).json({ message: "Donation created successfully", donation });
@@ -34,7 +32,6 @@ const createDonation = async (req, res) => {
   }
 };
 
-// Get all donations (Admin)
 const getDonations = async (req, res) => {
   try {
     const donations = await Donation.find()
@@ -52,7 +49,6 @@ const getDonations = async (req, res) => {
   }
 };
 
-// Get logged-in user's donations
 const getMyDonations = async (req, res) => {
   try {
     const donations = await Donation.find({ user: req.user._id })
@@ -65,7 +61,6 @@ const getMyDonations = async (req, res) => {
   }
 };
 
-// Update donation status (Admin)
 const updateDonationStatus = async (req, res) => {
   try {
     const donation = await Donation.findById(req.params.id);

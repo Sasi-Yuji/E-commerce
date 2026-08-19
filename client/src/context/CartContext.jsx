@@ -3,10 +3,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  // Load user immediately
   const savedUser = JSON.parse(localStorage.getItem("user") || "null");
 
-  // Load cart immediately (guest or user)
   const initialCart = (() => {
     if (savedUser?._id) {
       const savedCart = localStorage.getItem(`cart_${savedUser._id}`);
@@ -20,16 +18,13 @@ export function CartProvider({ children }) {
   const [user, setUser] = useState(savedUser);
   const [cartItems, setCartItems] = useState(initialCart);
 
-  // Helper: key per user
   const getStorageKey = (u = user) =>
     u?._id ? `cart_${u._id}` : "guest_cart";
 
-  // 🔹 Save cart whenever it changes
   useEffect(() => {
     localStorage.setItem(getStorageKey(), JSON.stringify(cartItems));
   }, [cartItems, user]);
 
-  // ✅ Add
   const addToCart = (product) => {
     setCartItems((prev) => {
       const existing = prev.find((p) => p._id === product._id);
@@ -42,12 +37,10 @@ export function CartProvider({ children }) {
     });
   };
 
-  // ✅ Remove
   const removeFromCart = (id) => {
     setCartItems((prev) => prev.filter((p) => p._id !== id));
   };
 
-  // ✅ Update
   const updateQuantity = (id, qty) => {
     setCartItems((prev) =>
       prev.map((p) =>
@@ -56,7 +49,6 @@ export function CartProvider({ children }) {
     );
   };
 
-  // ✅ Total
   const getTotal = () => {
     return cartItems.reduce(
       (sum, item) => sum + item.price * item.quantity,
@@ -64,18 +56,15 @@ export function CartProvider({ children }) {
     );
   };
 
-  // ✅ Clear
   const clearCart = () => {
     setCartItems([]);
     localStorage.removeItem(getStorageKey());
   };
 
-  // ✅ Handle login/logout
   const setUserContext = (userObj) => {
     if (userObj && userObj._id) {
       localStorage.setItem("user", JSON.stringify(userObj));
 
-      // migrate guest cart
       const guestCart = localStorage.getItem("guest_cart");
       if (guestCart) {
         localStorage.setItem(`cart_${userObj._id}`, guestCart);

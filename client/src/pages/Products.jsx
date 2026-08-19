@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useCart } from "../context/CartContext";
+import { API_BASE_URL } from "../config";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Products.css";
 
-// Import the texture image for hero background
 import oldPaper from "../assets/old-paper-texture.png";
 
 function Products() {
@@ -17,7 +17,7 @@ function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/products");
+        const res = await fetch(`${API_BASE_URL}/api/products`);
         const data = await res.json();
         setProducts(data);
         setFilteredProducts(data);
@@ -50,7 +50,6 @@ function Products() {
 
   return (
     <div className="products-page">
-      {/* ✅ Hero Section */}
       <div
         className="hero-section text-center text-white"
         style={{
@@ -65,7 +64,6 @@ function Products() {
           Relive the past, own the classics, and cherish timeless finds.
         </p>
 
-        {/* Search Bar */}
         <div className="d-flex justify-content-center mt-4">
           <input
             type="text"
@@ -77,7 +75,6 @@ function Products() {
         </div>
       </div>
 
-      {/* ✅ Category Filter Bar - below hero, aligned right */}
       <div className="category-bar">
         <label className="me-2 fw-bold">Category by:</label>
         <select
@@ -93,7 +90,6 @@ function Products() {
         </select>
       </div>
 
-      {/* Products Grid */}
       <div className="products-bg">
         <div className="container">
           <div className="row g-4">
@@ -104,7 +100,7 @@ function Products() {
               >
                 <div className="card product-card h-100 shadow-sm">
                   <img
-                    src={`http://localhost:5000${product.image}`}
+                    src={`${API_BASE_URL}${product.image}`}
                     alt={product.name}
                     className="card-img-top product-img"
                   />

@@ -1,11 +1,8 @@
 const Order = require("../models/Order");
 const Stats = require("../models/Stats");
 const User = require("../models/User");
-const Donation = require("../models/Donation"); // ✅ Added donation model
+const Donation = require("../models/Donation"); 
 
-// @desc    Create new order (with optional donation)
-// @route   POST /api/orders
-// @access  Private
 const createOrder = async (req, res) => {
   try {
     const { products, totalAmount, donation } = req.body;
@@ -14,7 +11,6 @@ const createOrder = async (req, res) => {
       return res.status(400).json({ message: "No order items" });
     }
 
-    // 1. Create new order
     const order = new Order({
       user: req.user._id,
       products,
@@ -24,21 +20,19 @@ const createOrder = async (req, res) => {
 
     const createdOrder = await order.save();
 
-    // 2. If donation exists, save it
     if (donation && (donation.itemType || donation.amount)) {
       await Donation.create({
         user: req.user._id,
-        order: createdOrder._id, // link donation to order
+        order: createdOrder._id, 
         itemType: donation.itemType || null,
         description: donation.description || "",
         quantity: donation.quantity || 1,
         condition: donation.condition || "New",
-        donationType: donation.donationType || "item", // "item" or "money"
-        amount: donation.amount || 0, // for money donations
+        donationType: donation.donationType || "item", 
+        amount: donation.amount || 0, 
       });
     }
 
-    // 3. Update stats
     await Stats.findOneAndUpdate(
       {},
       {
@@ -50,12 +44,11 @@ const createOrder = async (req, res) => {
 
     res.status(201).json(createdOrder);
   } catch (err) {
-    console.error("❌ Create Order Error:", err);
+    console.error(" Create Order Error:", err);
     res.status(500).json({ message: "Failed to place order", error: err.message });
   }
 };
 
-// @desc    Get logged-in user's orders
 const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id })
@@ -64,12 +57,11 @@ const getMyOrders = async (req, res) => {
 
     res.json(orders);
   } catch (err) {
-    console.error("❌ Get My Orders Error:", err);
+    console.error(" Get My Orders Error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// @desc    Get order by ID
 const getOrderById = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id)
@@ -87,12 +79,11 @@ const getOrderById = async (req, res) => {
 
     res.json(order);
   } catch (err) {
-    console.error("❌ Get Order By ID Error:", err);
+    console.error(" Get Order By ID Error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// @desc    Get all orders (Admin)
 const getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find()
@@ -102,12 +93,11 @@ const getAllOrders = async (req, res) => {
 
     res.json(orders);
   } catch (err) {
-    console.error("❌ Get All Orders Error:", err);
+    console.error(" Get All Orders Error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// @desc    Update order status (Admin)
 const updateOrderStatus = async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
@@ -118,7 +108,7 @@ const updateOrderStatus = async (req, res) => {
 
     res.json({ message: "Order status updated", order });
   } catch (err) {
-    console.error("❌ Update Order Status Error:", err);
+    console.error(" Update Order Status Error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };

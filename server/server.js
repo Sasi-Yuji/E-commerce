@@ -5,15 +5,20 @@ require("dotenv").config();
 
 const app = express();
 
-// Allowed origins
 const allowedOrigins = [
   "http://localhost:5173",
-  // Add deployed frontend URL here later
+  process.env.CLIENT_URL,
 ];
 
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".onrender.com") || origin.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(null, true);
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -23,20 +28,18 @@ app.use(
 app.use(express.json());
 
 
-// MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .then(() => console.log(" MongoDB connected"))
+  .catch((err) => console.error(" MongoDB connection error:", err));
 
-// Routes
 app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/donations", require("./routes/donationRoutes")); // donations available separately
+app.use("/api/donations", require("./routes/donationRoutes"));
 app.use("/api/products", require("./routes/productRoutes"));
-app.use("/api/orders", require("./routes/orderRoutes")); // orders (with auto-donation on create)
+app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/cart", require("./routes/cartRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
@@ -46,9 +49,8 @@ app.get("/", (req, res) => {
   res.send("Backend API is running...");
 });
 
-// Global error handler
 app.use((err, req, res, next) => {
-  console.error("🔥 Error:", err.message);
+  console.error(" Error:", err.message);
   res.status(500).json({ message: "Something went wrong", error: err.message });
 });
 

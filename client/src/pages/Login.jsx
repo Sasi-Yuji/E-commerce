@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext"; 
+import { API_BASE_URL } from "../config";
 import "./Login.css";
 import loginImg from "../assets/login.png";
 
@@ -18,7 +19,7 @@ function Login() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -27,15 +28,12 @@ function Login() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Login failed");
 
-      // ✅ Save token
       localStorage.setItem("token", data.token);
 
-      // ✅ Save user & update CartContext
       if (data.user) {
         setUserContext(data.user);
       }
 
-      // ✅ Redirect
       if (data.redirect) {
         navigate(data.redirect);
       } else {
@@ -44,7 +42,6 @@ function Login() {
     } catch (err) {
       setError(err.message);
     } finally {
-      // ✅ Clear input fields regardless of success or failure
       setEmail("");
       setPassword("");
       setLoading(false);
