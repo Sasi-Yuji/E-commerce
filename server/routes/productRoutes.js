@@ -1,6 +1,6 @@
 const express = require("express");
 const multer = require("multer");
-const path = require("path");
+
 const {
   getProducts,
   getProductById,
@@ -8,52 +8,28 @@ const {
   updateProduct,
   deleteProduct,
 } = require("../controllers/productController");
+
 const { protect, adminOnly } = require("../middleware/authMiddleware");
+
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary");
 
 const router = express.Router();
 
 /**
- * Multer storage configuration
+ * Cloudinary storage configuration
+ * Uploaded images go to: cloudinary / shopsphere/products
+ * req.file.path → permanent Cloudinary HTTPS URL
  */
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, "uploads/"); // folder where images will be stored
-  },
-  filename(req, file, cb) {
-    cb(
-      null,
-      `${Date.now()}-${file.fieldname}${path.extname(file.originalname)}`
-    );
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "shopsphere/products",
+    allowed_formats: ["jpg", "jpeg", "png", "gif"],
   },
 });
 
-/**
- * File filter - allow only images
- */
-function checkFileType(file, cb) {
-  const filetypes = /jpg|jpeg|png|gif/;
-  const extname = filetypes.test(
-    path.extname(file.originalname).toLowerCase()
-  );
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (extname && mimetype) {
-    return cb(null, true);
-  } else {
-    cb("Images only!");
-  }
-}
-
-const upload = multer({
-  storage,
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-});
-
-/**
- * Routes
- */
+const upload = multer({ storage });
 
 // Get all products
 router.get("/", getProducts);
@@ -61,15 +37,13 @@ router.get("/", getProducts);
 // Get single product by ID
 router.get("/:id", getProductById);
 
-// Add a new product with image upload
+// Add a new product with image upload (Admin only)
 router.post("/", protect, adminOnly, upload.single("image"), addProduct);
 
-// Update a product with optional new image
+// Update a product with optional new image (Admin only)
 router.put("/:id", protect, adminOnly, upload.single("image"), updateProduct);
 
-// Delete a product
+// Delete a product (Admin only)
 router.delete("/:id", protect, adminOnly, deleteProduct);
-
-
 
 module.exports = router;

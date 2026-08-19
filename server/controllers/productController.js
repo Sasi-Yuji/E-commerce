@@ -40,7 +40,7 @@ const addProduct = async (req, res) => {
       description,
       price,
       category,
-      image: req.file ? `/uploads/${req.file.filename}` : null,
+      image: req.file ? req.file.path : null,
     });
 
     const createdProduct = await product.save();
@@ -73,7 +73,7 @@ const updateProduct = async (req, res) => {
       product.category = category || product.category;
 
       if (req.file) {
-        product.image = `/uploads/${req.file.filename}`;
+        product.image = req.file.path;
       }
 
       const updatedProduct = await product.save();
