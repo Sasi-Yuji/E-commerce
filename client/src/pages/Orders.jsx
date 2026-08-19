@@ -72,12 +72,9 @@ function Orders() {
                     {order.products.map((p) => {
                       let imgSrc = "https://via.placeholder.com/60";
                       if (p.product?.image) {
-                        if (p.product.image.startsWith("http")) {
-                          imgSrc = p.product.image;
-                        } else {
-                          const filename = p.product.image.replace(/^\/+uploads\//, "");
-                          imgSrc = `${API_BASE_URL}/uploads/${filename}`;
-                        }
+                        imgSrc = p.product.image.startsWith("http")
+                          ? p.product.image
+                          : "https://via.placeholder.com/60";
                       }
 
                       return (

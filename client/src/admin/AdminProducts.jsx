@@ -164,7 +164,11 @@ const AdminProducts = () => {
                   </thead>
                   <tbody>
                     {products.length > 0 ? products.map(product => {
-                      const imageUrl = product.image ? `${API_BASE_URL}/uploads/${product.image.replace(/^\/uploads\//, "")}` : null;
+                      const imageUrl = product.image
+                        ? product.image.startsWith("http")
+                          ? product.image
+                          : null
+                        : null;
 
                       return (
                         <tr key={product._id}>

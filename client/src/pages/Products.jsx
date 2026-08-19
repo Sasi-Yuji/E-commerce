@@ -100,7 +100,13 @@ function Products() {
               >
                 <div className="card product-card h-100 shadow-sm">
                   <img
-                    src={`${API_BASE_URL}${product.image}`}
+                    src={
+                      product.image
+                        ? product.image.startsWith("http")
+                          ? product.image
+                          : `${API_BASE_URL}${product.image}`
+                        : "https://via.placeholder.com/300x200?text=No+Image"
+                    }
                     alt={product.name}
                     className="card-img-top product-img"
                   />
